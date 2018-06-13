@@ -14,11 +14,13 @@ const server = require('http').Server(app);
 // sockets that will handle the signaling between the clients
 const io = require('socket.io')(server);
 
+// server the client static files
+app.use(express.static('client'));
+
 // routes
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '../../client/index.html'));
 });
-
 
 // port
 const PORT = config.PORT;
