@@ -1,0 +1,1 @@
+npm install || yarn install || echo 'package manager is not installed'
