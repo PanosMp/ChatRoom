@@ -1,0 +1,15 @@
+{
+  "name": "ChatRoom",
+  "version": "1.0.0",
+  "description": "A chat app build on webrtc",
+  "main": "app.js",
+  "repository": "https://github.com/PanosMp/ChatRoom.git",
+  "author": "PanosMp <panos.mparmpagiannis@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "memory-cache": "^0.2.0",
+    "socket.io": "^2.1.1",
+    "uuid": "^3.2.1"
+  }
+}
