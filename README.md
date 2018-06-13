@@ -17,6 +17,6 @@ Notices:
  2. the run script will try to use the nodemon module if exists, to install run `npm install -g nodemon`
 
 The default port for the service is 3000 but that can easily change by passing a PORT env parameter 
-(e.g.: PORT=1345 node server.js) or by changing the config file under the server folder
+(e.g.: `PORT=1345 node server.js`) or by changing the config file under the server folder
 
 To open the application in your browser just visit: http://localhost:PORT/
