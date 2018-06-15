@@ -37,6 +37,30 @@ module.exports = (socket, appController) => {
         appController.loadHomepage();
     });
 
+    $('body').on('click', '.user-actions > #sound-button', () => {
+        if (!document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled) {
+            $('#volume-off').addClass('hide-all');
+            $('#volume-on').removeClass('hide-all');
+            document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled = true;
+        } else {
+            $('#volume-on').addClass('hide-all');
+            $('#volume-off').removeClass('hide-all');
+            document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled = false;
+        }
+    });
+
+    $('body').on('click', '.user-actions > #mic-button', () => {
+        if ($("#remoteVideo").prop('muted') ) {
+            $('#mic-on').addClass('hide-all');
+            $('#mic-off').removeClass('hide-all');
+            $("#remoteVideo").prop('muted', false);
+        } else {
+            $('#mic-off').addClass('hide-all');
+            $('#mic-on').removeClass('hide-all');
+            $("#remoteVideo").prop('muted', true);
+        }
+    });
+
     socket.on('joined', (data) => {
         let user = data.user;
         let isCaller = data.is_caller;

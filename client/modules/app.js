@@ -20,10 +20,7 @@ $(document).ready(() => {
     events(s, appController);
 
     // load home page on start
-    // controller(s).loadHomepage();
-
-    // debug
-    appController.joinChatRoom(1);
+    controller(s).loadHomepage();
 });
 
 
