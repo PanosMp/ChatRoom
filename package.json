@@ -2,11 +2,16 @@
   "name": "ChatRoom",
   "version": "1.0.0",
   "description": "A chat app build on webrtc",
-  "main": "app.js",
+  "main": "/server/server.js",
   "repository": "https://github.com/PanosMp/ChatRoom.git",
   "author": "PanosMp <panos.mparmpagiannis@gmail.com>",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "browserify ./client/modules/* -o ./client/app.dist.js"
+  },
   "license": "MIT",
   "dependencies": {
+    "browserify": "^16.2.2",
     "express": "^4.16.3",
     "memory-cache": "^0.2.0",
     "socket.io": "^2.1.1",
