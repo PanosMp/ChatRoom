@@ -208,6 +208,42 @@ textarea:focus, input:focus, button:focus {
     background-color: black;
 }
 
+.user-actions > div > button {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.user-actions > div {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+#mic-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 5rem;
+    width: 5rem;
+}
+
+#sound-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 5rem;
+    width: 5rem;
+}
+
+.user-actions {
+    /* position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
 
 #room-header {
     height: 2rem;
