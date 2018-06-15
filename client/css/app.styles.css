@@ -1,0 +1,244 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.primary-color {
+    color: #42a5f5;
+}
+
+.primary-bg-color {
+    background-color: #42a5f5;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.vw-100 {
+    width: 100vw;
+}
+
+.flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fit-parent {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.hide-all {
+    display: none;
+}
+
+.btn {
+    text-transform: uppercase;
+    background-color: #42a5f5;
+    color: #ffffff;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.btn > img {
+    max-height: 20px;
+}
+
+.min-w-100 {
+    min-width: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.error-border {
+    border-bottom: 1px solid #e53935 !important;
+}
+
+.success-border {
+    border-bottom: 1px solid #00e676 !important;
+}
+
+.nav-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.nav-logo > img {
+    height: 4rem;
+    background-color: white;
+    border-radius: 50%;
+    top: 1rem;
+    position: relative;
+}
+
+.room-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7.5rem;
+}
+
+#hashtag {
+    height: 1rem;
+}
+
+#message-badge-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#message-badge-wrapper > span {
+    margin: 0 10px;
+}
+
+#message-badge-wrapper-inside {
+    flex-grow: 1;
+}
+
+#message-badge {
+    background-color: white;
+    padding: 5px;
+    border-radius: 20px;
+    color: #42a5f5;
+}
+
+#room-footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #eee;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+}
+
+#room-id-hash {
+    font-size: 1rem;
+    flex-grow: 1;
+    max-height: 1rem;
+    margin-top: -0.15rem;
+}
+
+.nav-logo:hover {
+    cursor: pointer;
+}
+
+#leave:hover {
+    cursor: pointer;
+}
+
+#leave {
+    height: 1.25rem;
+    transform: rotate(-90deg)
+}
+
+#logo-wrapper > img {
+    position: absolute;
+    padding: 10px;
+    margin-top: -52px;
+    margin-left: -32px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    width: 50px;
+}
+
+#join-room-prompt-wrapper {
+    background-color: #eeeeee;
+}
+
+#join-room-prompt {
+    padding: 20px;
+    width: 15rem;
+    height: 10rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#join-room-prompt > input{
+    border: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;   
+}
+
+#join-room-prompt > input:focus {
+    border: none;
+    border-bottom:  1px solid #42a5f5
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+
+#localVideo {
+    width: 20rem;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+}
+
+#remoteVideo {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    top: 2rem;
+    left: 0;
+    height: 100vh;
+    background-color: black;
+}
+
+
+#room-header {
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+@keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}
+
+.rotating {
+-webkit-animation: rotating 2s linear infinite;
+-moz-animation: rotating 2s linear infinite;
+-ms-animation: rotating 2s linear infinite;
+-o-animation: rotating 2s linear infinite;
+animation: rotating 2s linear infinite;
+}
