@@ -41,10 +41,7 @@ $(document).ready(() => {
     events(s, appController);
 
     // load home page on start
-    // controller(s).loadHomepage();
-
-    // debug
-    appController.joinChatRoom(1);
+    controller(s).loadHomepage();
 });
 
 
@@ -275,6 +272,30 @@ module.exports = (socket, appController) => {
         appController.loadHomepage();
     });
 
+    $('body').on('click', '.user-actions > #sound-button', () => {
+        if (!document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled) {
+            $('#volume-off').addClass('hide-all');
+            $('#volume-on').removeClass('hide-all');
+            document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled = true;
+        } else {
+            $('#volume-on').addClass('hide-all');
+            $('#volume-off').removeClass('hide-all');
+            document.getElementById('localVideo').srcObject.getAudioTracks()[0].enabled = false;
+        }
+    });
+
+    $('body').on('click', '.user-actions > #mic-button', () => {
+        if ($("#remoteVideo").prop('muted') ) {
+            $('#mic-on').addClass('hide-all');
+            $('#mic-off').removeClass('hide-all');
+            $("#remoteVideo").prop('muted', false);
+        } else {
+            $('#mic-off').addClass('hide-all');
+            $('#mic-on').removeClass('hide-all');
+            $("#remoteVideo").prop('muted', true);
+        }
+    });
+
     socket.on('joined', (data) => {
         let user = data.user;
         let isCaller = data.is_caller;
@@ -412,8 +433,19 @@ module.exports = {
     // Room template
     video: `<script id="home-template" type="text/x-handlebars-template">
             <video id="localVideo" autoplay muted></video>
-            <video id="remoteVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay></video>
             </video>
     </script>`,
+
+    buttons: `<div class='user-actions'>
+        <div id='mic-button'>
+            <button id='mic-on'><img src='./assets/mic.svg'></button> 
+            <button id='mic-off' class='hide-all'><img src='./assets/mic-off.svg'></button> 
+        </div>
+        <div id='sound-button'>
+            <button id='volume-on'><img src='./assets/volume.svg'></button> 
+            <button id='volume-off' class='hide-all'><img src='./assets/volume-x.svg'></button> 
+        </div>
+    </div>`,
 };
 },{}]},{},[1,2,3,4,5,6]);
