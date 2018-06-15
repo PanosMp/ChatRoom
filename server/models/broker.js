@@ -4,6 +4,9 @@
  * @param {*} cache 
  */
 const UserModel = require('./user');
+const rooms = {
+
+};
 module.exports = (io, cache) => {
     // on new connection
     io.on('connection', (socket) => {
@@ -11,19 +14,29 @@ module.exports = (io, cache) => {
         let socketId = socket.id;
         // if exists should return the cached room Id
         let cachedEntry = cache.get(socketId);
-        let user = cachedEntry ||  UserModel(socketId);
+        let user = cachedEntry || UserModel(socketId);
 
         // join room event
         socket.on('join', (roomId) => {
+            if (!rooms[roomId]) {
+                rooms[roomId] = [];
+            }
             // join socket io room
             socket.join(roomId);
+            rooms[roomId].push(user.id);
+
             // update user instance 
             user.roomId = roomId;
             // push in cache
             cache.update(socketId, user);
             // log
             console.info(`User with socket id: ${socketId} entered room: ${roomId}`);
-            socket.emit('joined', roomId);
+            console.log(rooms[roomId].length);
+            socket.emit('joined', {
+                room_id: roomId,
+                user, 
+                is_caller: rooms[roomId].length == 2,
+            });
         });
     
         // leave room event
@@ -40,8 +53,9 @@ module.exports = (io, cache) => {
         });
 
         // on message push to all clients in room
-        socket.on('message', (message, roomId) => {
-            socket.to(roomId).emit(message);
+        socket.on('message', (message) => {
+            console.log("Passing message in room: "+ user.roomId);
+            socket.to(user.roomId).emit('message', message);
         });
 
         // on disconnect
@@ -51,6 +65,10 @@ module.exports = (io, cache) => {
                 socket.to(user.roomId).emit('user_left');
             }
             cache.remove(socketId);
+            
+            if (user.roomId) {
+                rooms[user.roomId].splice(rooms[user.roomId].indexOf(user.id),1);
+            }
             console.info(`User with socket id: ${socketId} disconnected`);
         });
 

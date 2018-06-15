@@ -1,4 +1,3 @@
-
 /**
  * Server module
  */
@@ -7,10 +6,17 @@ const config = require('./config');
 const broker = require('./models/broker');
 const cache = require('./models/cache');
 const path = require("path");
+const fs = require('fs');
 
 // initialize express
 const app = express();
-const server = require('http').Server(app);
+
+
+const credentials = {
+    key: fs.readFileSync(path.join(__dirname , '../certificates/key.pem')),
+    cert: fs.readFileSync(path.join(__dirname , '../certificates/cert.pem')),
+};
+const server = require('https').Server(credentials, app);
 // sockets that will handle the signaling between the clients
 const io = require('socket.io')(server);
 
