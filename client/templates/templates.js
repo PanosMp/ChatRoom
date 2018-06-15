@@ -61,7 +61,18 @@ module.exports = {
     // Room template
     video: `<script id="home-template" type="text/x-handlebars-template">
             <video id="localVideo" autoplay muted></video>
-            <video id="remoteVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay></video>
             </video>
     </script>`,
+
+    buttons: `<div class='user-actions'>
+        <div id='mic-button'>
+            <button id='mic-on'><img src='./assets/mic.svg'></button> 
+            <button id='mic-off' class='hide-all'><img src='./assets/mic-off.svg'></button> 
+        </div>
+        <div id='sound-button'>
+            <button id='volume-on'><img src='./assets/volume.svg'></button> 
+            <button id='volume-off' class='hide-all'><img src='./assets/volume-x.svg'></button> 
+        </div>
+    </div>`,
 };
