@@ -65,6 +65,7 @@ module.exports = (socket, appController) => {
         let user = data.user;
         let isCaller = data.is_caller;
 
+        console.log("Should call: "+isCaller);
         if(isCaller) {
             appController.makeOffer();
         } else {
@@ -75,10 +76,6 @@ module.exports = (socket, appController) => {
     socket.on('message', (data) => {
         console.log("Received message");
         console.log(data);
-        if(data.handshake) {
-            console.log("Message type handshake");
-            appController.makeOffer();
-        }
 
         if ((data.type == 'ice')) {
             console.log("Message type ice");
